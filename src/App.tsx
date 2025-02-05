@@ -13,6 +13,7 @@ const App = () => {
     try {
       const savedCart = localStorage.getItem('cart');
       return savedCart ? JSON.parse(savedCart) : [];
+
     } catch (error) {
       console.error("Error reading cart from localStorage", error);
       return [];
@@ -20,7 +21,7 @@ const App = () => {
 
   };
 
-  const [cart, setCart] = useState<Product[]>(getCartFromLocalStorage);
+  const [cart, setCart] = useState<Product[]>(() => getCartFromLocalStorage());
 
   // Update localStorage whenever cart changes
   useEffect(() => {
@@ -36,7 +37,7 @@ const App = () => {
 
 
   return (
-    <Router>
+    <Router basename="/Ecommerce">
       <Routes>
         <Route path="/" element={<Home cart={cart} updateCart={updateCart} />} />
         <Route path="/product/:id" element={<ProductDetail cart={cart} updateCart={updateCart} />} />

@@ -68,7 +68,7 @@ const Home = ({ cart, updateCart }: { cart: Product[], updateCart: (cart: Produc
         setCurrentPage(1); //reset ไปหน้าแรกเมื่อมีการ filter ใหม่
     }, [search, category, products]);
 
-    console.log(products)
+
 
     //รายการที่จะแสดงในหน้าปัจจุบัน
     const indexOfLastItem = currentPage * itemPerPage;
